@@ -1,0 +1,464 @@
+.track-page {
+    min-height: 100vh;
+    background: #f7f8fb;
+}
+
+.track-topbar {
+    border-bottom: 1px solid #e7e9ee;
+    background: #ffffff;
+}
+
+.track-topbar-inner {
+    width: min(1180px, calc(100% - 40px));
+    min-height: 72px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.track-brand {
+    color: #202632;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+}
+
+.track-brand span {
+    color: #635bff;
+}
+
+.track-nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.track-nav a {
+    color: #697386;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.track-nav a:hover {
+    color: #202632;
+}
+
+.track-main {
+    width: min(980px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 42px 0 70px;
+}
+
+.track-breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+    color: #9aa1ae;
+    font-size: 12px;
+}
+
+.track-breadcrumb a {
+    color: #697386;
+    font-weight: 600;
+}
+
+.track-back-link {
+    display: inline-block;
+    margin-bottom: 26px;
+    color: #697386;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.track-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 28px;
+}
+
+.track-eyebrow {
+    margin-bottom: 8px;
+    color: #8d95a3;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+}
+
+.track-header h1 {
+    margin: 0;
+    color: #202632;
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: -1.3px;
+}
+
+.track-header p {
+    max-width: 620px;
+    margin: 10px 0 0;
+    color: #7b8493;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.track-header-badge {
+    flex: 0 0 auto;
+    min-width: 86px;
+    padding: 12px 16px;
+    border: 1px solid #e3e6ec;
+    border-radius: 12px;
+    background: #ffffff;
+    text-align: center;
+}
+
+.track-header-badge span {
+    display: block;
+    margin-bottom: 3px;
+    color: #969eab;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.track-header-badge strong {
+    color: #202632;
+    font-size: 17px;
+}
+
+.track-release-card {
+    margin-bottom: 22px;
+    padding: 18px 20px;
+    border: 1px solid #e4e7ed;
+    border-radius: 14px;
+    background: #ffffff;
+}
+
+.track-release-card-label {
+    margin-bottom: 9px;
+    color: #929aa7;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.track-release-card-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.track-release-card h2 {
+    margin: 0;
+    color: #252b36;
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.track-release-card p {
+    margin: 4px 0 0;
+    color: #89919f;
+    font-size: 12px;
+}
+
+.track-small-link {
+    flex: 0 0 auto;
+    color: #635bff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.track-error {
+    margin-bottom: 22px;
+    padding: 16px 18px;
+    border: 1px solid #f0caca;
+    border-radius: 12px;
+    background: #fff7f7;
+    color: #9f3030;
+}
+
+.track-error-title {
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.track-error ul {
+    margin: 0;
+    padding-left: 19px;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.track-card {
+    margin-bottom: 20px;
+    padding: 28px;
+    border: 1px solid #e3e6ec;
+    border-radius: 16px;
+    background: #ffffff;
+}
+
+.track-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.track-section-number {
+    display: block;
+    margin-bottom: 6px;
+    color: #969eaa;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.track-card-header h2 {
+    margin: 0;
+    color: #252b36;
+    font-size: 18px;
+    letter-spacing: -0.3px;
+}
+
+.track-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.track-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.track-field-full {
+    grid-column: 1 / -1;
+}
+
+.track-field label {
+    color: #3a4351;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.track-field input,
+.track-field select,
+.track-field textarea {
+    width: 100%;
+    border: 1px solid #dfe3e9;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #252b36;
+    font: inherit;
+    font-size: 13px;
+    outline: none;
+}
+
+.track-field input,
+.track-field select {
+    height: 45px;
+    padding: 0 12px;
+}
+
+.track-field textarea {
+    min-height: 120px;
+    padding: 11px 12px;
+    resize: vertical;
+    line-height: 1.55;
+}
+
+.track-field input:focus,
+.track-field select:focus,
+.track-field textarea:focus {
+    border-color: #9993ff;
+    box-shadow: 0 0 0 3px rgba(99, 91, 255, 0.08);
+}
+
+.track-help {
+    color: #929aa7;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.track-static-note {
+    display: flex;
+    align-items: center;
+    min-height: 45px;
+    color: #8a93a1;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.track-checkbox {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 9px;
+    min-height: 45px;
+    padding: 0 12px;
+    border: 1px solid #dfe3e9;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+.track-checkbox input {
+    width: 16px !important;
+    height: 16px !important;
+    margin: 0;
+}
+
+.track-checkbox span {
+    color: #505967;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.track-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 26px 0 36px;
+}
+
+.track-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 9px;
+    border: 1px solid transparent;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.track-button-primary {
+    background: #202632;
+    color: #ffffff;
+}
+
+.track-button-primary:hover {
+    background: #151a22;
+}
+
+.track-button-secondary {
+    border-color: #dfe3e9;
+    background: #ffffff;
+    color: #596273;
+}
+
+.track-button-secondary:hover {
+    background: #f8f9fb;
+}
+
+.track-danger-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 22px 24px;
+    border: 1px solid #eadada;
+    border-radius: 14px;
+    background: #fffafa;
+}
+
+.track-danger-label {
+    margin-bottom: 6px;
+    color: #b05a5a;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.1px;
+}
+
+.track-danger-card h2 {
+    margin: 0;
+    color: #4a3030;
+    font-size: 15px;
+}
+
+.track-danger-card p {
+    margin: 5px 0 0;
+    color: #9a7a7a;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.track-button-danger {
+    border-color: #e7bcbc;
+    background: #ffffff;
+    color: #a53d3d;
+}
+
+.track-button-danger:hover {
+    background: #fff2f2;
+}
+
+@media (max-width: 760px) {
+    .track-topbar-inner,
+    .track-main {
+        width: min(100% - 28px, 980px);
+    }
+
+    .track-nav {
+        gap: 12px;
+    }
+
+    .track-nav a:nth-child(2) {
+        display: none;
+    }
+
+    .track-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .track-header h1 {
+        font-size: 31px;
+    }
+
+    .track-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .track-field-full {
+        grid-column: auto;
+    }
+
+    .track-card {
+        padding: 21px;
+    }
+
+    .track-release-card-content {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .track-actions {
+        align-items: stretch;
+        flex-direction: column-reverse;
+    }
+
+    .track-actions .track-button {
+        width: 100%;
+    }
+
+    .track-danger-card {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .track-danger-card .track-button {
+        width: 100%;
+    }
+}
