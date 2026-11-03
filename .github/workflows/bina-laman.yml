@@ -1,0 +1,51 @@
+name: Bina laman (kemas kini senarai lagu)
+
+# Dijalankan secara manual: tab Actions -> "Bina laman (kemas kini senarai lagu)" -> Run workflow.
+# Ia menarik senarai lagu daripada playlist YouTube (src/data/schedule.json), membina laman,
+# dan menghasilkan fail ZIP "nasyidos-public_html" untuk dimuat naik ke public_html di Hostinger.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bina:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Muat turun kod
+        uses: actions/checkout@v4
+
+      - name: Sediakan Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Pasang kebergantungan
+        run: npm ci
+
+      - name: Jalankan ujian
+        run: npm test
+
+      - name: Tarik senarai lagu daripada YouTube
+        env:
+          # Disimpan di GitHub: Settings -> Secrets and variables -> Actions -> YT_API_KEY
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+          # Gagal dengan mesej jelas jika tiada satu pun lagu ditemui
+          REQUIRE_TRACKS: '1'
+        run: npm run library
+
+      - name: Bina laman
+        run: npm run build
+
+      - name: Simpan hasil (untuk dimuat turun)
+        uses: actions/upload-artifact@v4
+        with:
+          name: nasyidos-public_html
+          path: dist/
+          # .htaccess ialah fail tersembunyi; tanpa ini ia tidak masuk ke dalam ZIP
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30

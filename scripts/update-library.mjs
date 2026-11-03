@@ -85,6 +85,15 @@ async function main() {
     if (mins > 0 && mins < 30) console.warn(`    amaran: senarai pendek, lagu akan berulang kerap`);
   }
 
+  const total = blocks.reduce((sum, b) => sum + (library[b.id]?.length ?? 0), 0);
+  if (process.env.REQUIRE_TRACKS === '1' && total === 0) {
+    console.error(
+      '\nTiada satu pun lagu ditemui. Semak `playlistId` dalam src/data/schedule.json dan pastikan playlist itu awam ' +
+        'serta mengandungi video yang boleh di-embed.',
+    );
+    process.exit(1);
+  }
+
   await writeFile(libraryPath, JSON.stringify(library, null, 2) + '\n');
   console.log(`\nSiap: ${libraryPath}`);
 }

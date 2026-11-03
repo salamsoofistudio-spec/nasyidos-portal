@@ -34,6 +34,20 @@ Laman akan memaparkan "Siaran belum bermula" sehingga senarai lagu diisi (langka
 
 Ulang langkah 3 dan 4 setiap kali playlist berubah. Kunci API **tidak** terdedah dalam laman.
 
+### Tanpa terminal: GitHub Actions
+
+Kalau tidak mahu memasang Node.js, biarkan GitHub yang menjalankan langkah di atas:
+
+1. Simpan kunci API sekali sahaja: repo **Settings → Secrets and variables → Actions → New repository secret**, nama `YT_API_KEY`.
+2. Edit `src/data/schedule.json` terus di GitHub (ikon pensel) dan isi `playlistId`. Simpan (commit).
+3. Tab **Actions → Bina laman (kemas kini senarai lagu) → Run workflow**.
+4. Bila selesai (hijau), buka larian itu dan muat turun artifak **nasyidos-public_html** di bahagian bawah.
+5. Ekstrak dan muat naik kandungannya ke `public_html` (lihat bawah).
+
+Jika larian gagal dengan "Tiada satu pun lagu ditemui", semak `playlistId` dan pastikan playlist awam. Ulangi langkah 3–5 setiap kali playlist berubah.
+
+> Butang *Run workflow* hanya muncul selepas fail workflow berada di cawangan `main`.
+
 ## Menerbitkan ke Hostinger (Web Hosting)
 
 ```bash
