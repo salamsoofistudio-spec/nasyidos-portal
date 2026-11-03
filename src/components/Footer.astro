@@ -1,0 +1,71 @@
+---
+import { SITE } from '../config';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer" id="tentang">
+  <div class="container inner">
+    <div class="about">
+      <div class="wordmark">nasyidos<span class="tld">.com</span></div>
+      <p>
+        Siaran nasyid 24 jam. Semua video dimainkan melalui pemain rasmi YouTube dan hak cipta kekal
+        milik pemilik asal.
+      </p>
+      <p class="copy">&copy; {year} {SITE.name}</p>
+    </div>
+    <nav aria-label="Pautan kaki">
+      <a href="/#siaran">Siaran Langsung</a>
+      <a href="/#jadual">Jadual</a>
+      <a href="/#cadang">Hubungi</a>
+      <a href="/hak-cipta/">Notis Hak Cipta</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 24px;
+    border-top: 1px solid var(--border);
+    background: var(--deep);
+  }
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 32px 64px;
+    padding-block: 48px;
+  }
+  .about {
+    max-width: 440px;
+  }
+  .wordmark {
+    margin-bottom: 12px;
+    font-family: var(--font-display);
+    font-size: 1.625rem;
+    font-weight: 700;
+  }
+  .tld {
+    color: var(--muted);
+    font-weight: 500;
+  }
+  p {
+    margin: 0 0 8px;
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  .copy {
+    font-size: 0.8125rem;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 12px 32px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #eef0ff;
+  }
+  nav a:hover {
+    color: var(--peach);
+  }
+</style>

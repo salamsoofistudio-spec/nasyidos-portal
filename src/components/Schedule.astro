@@ -1,0 +1,128 @@
+---
+import type { Block } from '../lib/schedule';
+
+interface Props {
+  blocks: Block[];
+}
+const { blocks } = Astro.props;
+const sorted = [...blocks].sort((a, b) => a.start.localeCompare(b.start, undefined, { numeric: true }));
+---
+
+<section id="jadual" class="schedule">
+  <div class="container">
+    <div class="head">
+      <div>
+        <p class="eyebrow">Jadual siaran</p>
+        <h2 class="section-title">Rancangan hari ini</h2>
+      </div>
+      <p class="tz">Waktu mengikut Waktu Malaysia (MYT).</p>
+    </div>
+
+    <ul class="cards">
+      {
+        sorted.map((b) => (
+          <li class="card" data-block={b.id}>
+            <span class="time">{b.start}</span>
+            <span class="name">{b.name}</span>
+            <span class="desc">{b.desc}</span>
+            <span class="live"><span class="dot"></span>Sedang siaran</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .schedule {
+    border-top: 1px solid var(--border);
+    background: var(--deep);
+    padding-block: 72px;
+  }
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .tz {
+    margin: 0;
+    max-width: 360px;
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 170px;
+    padding: 22px 20px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface);
+  }
+  .time {
+    font-family: var(--font-display);
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--peach);
+  }
+  .name {
+    font-size: 1.0625rem;
+    font-weight: 700;
+  }
+  .desc {
+    flex: 1;
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  .live {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cyan);
+  }
+  .card[data-live] {
+    background: var(--surface-2);
+    border-color: var(--orange);
+  }
+  .card[data-live] .live {
+    display: inline-flex;
+  }
+
+  @media (max-width: 640px) {
+    .schedule {
+      padding-block: 48px;
+    }
+    .cards {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .card {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 16px;
+      padding: 14px 16px;
+    }
+    .time {
+      grid-row: span 3;
+      align-self: center;
+      font-size: 1.375rem;
+    }
+  }
+</style>
