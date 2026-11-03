@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import LivePlayer from '../components/LivePlayer.astro';
+import Schedule from '../components/Schedule.astro';
+import Artists from '../components/Artists.astro';
+import Cta from '../components/Cta.astro';
+import Footer from '../components/Footer.astro';
+import { collectArtists } from '../lib/artists';
+import type { Block, Library } from '../lib/schedule';
+import scheduleData from '../data/schedule.json';
+import libraryData from '../data/library.json';
+
+const blocks = scheduleData as Block[];
+const library = libraryData as Library;
+const artists = collectArtists(library);
+---
+
+<Layout>
+  <Header hasArtists={artists.length > 0} />
+  <main>
+    <section id="siaran" class="container siaran">
+      <Hero />
+      <LivePlayer blocks={blocks} library={library} />
+    </section>
+    <Schedule blocks={blocks} />
+    <Artists artists={artists} />
+    <Cta />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .siaran {
+    padding-block: 56px;
+  }
+  @media (max-width: 640px) {
+    .siaran {
+      padding-block: 32px;
+    }
+  }
+</style>

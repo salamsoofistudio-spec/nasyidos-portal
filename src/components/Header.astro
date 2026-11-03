@@ -1,0 +1,149 @@
+---
+interface Props {
+  hasArtists?: boolean;
+}
+const { hasArtists = false } = Astro.props;
+
+const links = [
+  { label: 'Siaran Langsung', href: '/#siaran' },
+  { label: 'Jadual', href: '/#jadual' },
+  ...(hasArtists ? [{ label: 'Artis', href: '/#artis' }] : []),
+  { label: 'Cadang Lagu', href: '/#cadang' },
+  { label: 'Tentang', href: '/#tentang' },
+];
+---
+
+<header class="site-header">
+  <div class="container bar">
+    <a href="/" class="brand" aria-label="nasyidos.com, laman utama">
+      <svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M20 3Q22.5 17.5 37 20Q22.5 22.5 20 37Q17.5 22.5 3 20Q17.5 17.5 20 3Z" fill="#ff7a1f"></path>
+      </svg>
+      <span class="wordmark">nasyidos<span class="tld">.com</span></span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-panel"
+      aria-label="Buka menu"
+    >
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"></path>
+      </svg>
+    </button>
+
+    <div class="panel" id="site-panel">
+      <nav aria-label="Utama">
+        {links.map((l) => <a href={l.href}>{l.label}</a>)}
+      </nav>
+      <a class="btn btn-primary" href="/#siaran">Dengar Sekarang</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const panel = document.getElementById('site-panel');
+  if (toggle && panel) {
+    const set = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Tutup menu' : 'Buka menu');
+      panel.toggleAttribute('data-open', open);
+    };
+    toggle.addEventListener('click', () => set(toggle.getAttribute('aria-expanded') !== 'true'));
+    panel.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) set(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') set(false);
+    });
+  }
+</script>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--border);
+  }
+  .bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 32px;
+    padding-block: 18px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-size: 1.625rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .tld {
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-2);
+    border-radius: 12px;
+    background: var(--surface);
+    cursor: pointer;
+  }
+  .panel {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 28px;
+    margin-inline: auto;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: #eef0ff;
+  }
+  nav a:hover {
+    color: var(--peach);
+  }
+
+  @media (max-width: 899px) {
+    .menu-toggle {
+      display: inline-flex;
+    }
+    .panel {
+      display: none;
+      flex: 0 0 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+      padding-bottom: 8px;
+    }
+    .panel[data-open] {
+      display: flex;
+    }
+    nav {
+      flex-direction: column;
+      gap: 0;
+      margin: 0;
+    }
+    nav a {
+      padding: 12px 0;
+      border-top: 1px solid var(--border);
+      font-size: 1.0625rem;
+    }
+  }
+</style>

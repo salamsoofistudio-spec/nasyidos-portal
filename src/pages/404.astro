@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Halaman tidak dijumpai – Nasyidos">
+  <Header />
+  <main class="container nf">
+    <p class="eyebrow">404</p>
+    <h1>Halaman tidak dijumpai</h1>
+    <p>Pautan mungkin sudah bertukar. Mari kembali ke siaran.</p>
+    <a class="btn btn-primary" href="/">Kembali ke siaran</a>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .nf {
+    padding-block: 96px;
+  }
+  h1 {
+    margin: 0 0 12px;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+  p {
+    color: var(--muted);
+    margin: 0 0 24px;
+  }
+</style>

@@ -1,0 +1,108 @@
+---
+import { Image } from 'astro:assets';
+import mascot from '../assets/maskot.webp';
+---
+
+<div class="hero">
+  <div class="text">
+    <p class="eyebrow"><span class="dot"></span>Siaran nasyid 24 jam</p>
+    <h1>Nasyid tanpa henti, sepanjang hari.</h1>
+    <p class="lead">
+      Satu siaran untuk semua pendengar. Tekan Mula, dan dengar bersama-sama orang lain pada masa yang sama.
+    </p>
+  </div>
+
+  <div class="mascot">
+    <div class="ring"></div>
+    <div class="disc"></div>
+    <div class="cut">
+      <Image
+        src={mascot}
+        alt="Maskot Nasyidos: budak lelaki berkopiah sedang melambai"
+        widths={[320, 480, 640]}
+        sizes="(min-width: 900px) 440px, 80vw"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+  </div>
+</div>
+
+<style>
+  .hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 32px 48px;
+    margin-bottom: 48px;
+  }
+  .text {
+    flex: 1 1 480px;
+    min-width: 0;
+  }
+  h1 {
+    margin: 16px 0;
+    max-width: 820px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 6vw, 4.25rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+  .lead {
+    margin: 0;
+    max-width: 620px;
+    font-size: clamp(1rem, 1.6vw, 1.1875rem);
+    color: var(--muted);
+  }
+
+  /* Maskot "terkeluar" dari bulatan: bahagian bawah dipotong ikut lengkung bulatan */
+  .mascot {
+    position: relative;
+    flex: 1 1 320px;
+    max-width: 440px;
+    margin: 56px auto 0;
+    aspect-ratio: 1 / 1;
+  }
+  .ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid var(--border);
+  }
+  .disc {
+    position: absolute;
+    inset: 9%;
+    border-radius: 50%;
+    background: var(--surface-2);
+    border: 4px solid var(--orange);
+    box-shadow: 0 24px 60px rgba(20, 22, 90, 0.45);
+  }
+  .cut {
+    position: absolute;
+    left: 9%;
+    right: 9%;
+    bottom: 9%;
+    height: 102.5%;
+    border-radius: 0 0 999px 999px;
+    overflow: hidden;
+  }
+  .cut :global(img) {
+    position: absolute;
+    left: -12.5%;
+    bottom: 0;
+    width: 125%;
+    max-width: none; /* tanpa ini, img { max-width: 100% } global memampatkan maskot */
+    height: auto;
+    display: block;
+  }
+
+  @media (max-width: 899px) {
+    .mascot {
+      flex-basis: auto;
+      width: min(300px, 80%);
+      margin-top: 40px;
+    }
+  }
+</style>

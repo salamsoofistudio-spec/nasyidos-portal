@@ -1,0 +1,37 @@
+[
+  {
+    "id": "subuh",
+    "name": "Nasyid Subuh",
+    "desc": "Lembut dan menenangkan untuk memulakan hari.",
+    "start": "05:00",
+    "playlistId": ""
+  },
+  {
+    "id": "pagi",
+    "name": "Pagi Bersemangat",
+    "desc": "Rentak ceria bersama sarapan pagi.",
+    "start": "08:00",
+    "playlistId": ""
+  },
+  {
+    "id": "klasik",
+    "name": "Nasyid Klasik",
+    "desc": "Lagu-lagu lama yang dirindui.",
+    "start": "13:00",
+    "playlistId": ""
+  },
+  {
+    "id": "petang",
+    "name": "Santai Petang",
+    "desc": "Teman perjalanan pulang.",
+    "start": "17:00",
+    "playlistId": ""
+  },
+  {
+    "id": "malam",
+    "name": "Malam Tenang",
+    "desc": "Penutup hari yang damai.",
+    "start": "21:00",
+    "playlistId": ""
+  }
+]

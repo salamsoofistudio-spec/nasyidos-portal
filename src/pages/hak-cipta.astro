@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../config';
+---
+
+<Layout title="Notis Hak Cipta – Nasyidos" description="Maklumat hak cipta dan cara meminta karya dikeluarkan daripada siaran Nasyidos.">
+  <Header />
+  <main class="container prose">
+    <h1>Notis Hak Cipta</h1>
+    <p>
+      Nasyidos tidak menyimpan, memuat turun atau menstrim semula sebarang audio atau video. Semua video dimainkan
+      melalui pemain rasmi YouTube (embed) daripada saluran pemilik asal, dan hak cipta kekal milik pemilik
+      masing-masing.
+    </p>
+    <h2>Anda pemilik karya dan mahu ia dikeluarkan?</h2>
+    <p>
+      Hubungi kami di <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a> dengan pautan video berkenaan
+      dan bukti anda pemilik atau wakil pemilik. Kami akan mengeluarkannya daripada siaran secepat mungkin.
+    </p>
+    <h2>Anda artis atau label dan mahu karya dimasukkan?</h2>
+    <p>
+      Kami mengalu-alukan penyertaan. E-mel kami dengan pautan rasmi video anda dan kami akan menyemaknya sebelum
+      dimasukkan ke dalam rancangan yang sesuai.
+    </p>
+    <p><a class="btn btn-primary" href="/">Kembali ke siaran</a></p>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .prose {
+    max-width: 760px;
+    padding-block: 64px;
+  }
+  h1 {
+    margin: 0 0 24px;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.1;
+  }
+  h2 {
+    margin: 32px 0 8px;
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+  }
+  p {
+    color: var(--muted);
+    margin: 0 0 16px;
+  }
+  p a:not(.btn) {
+    color: var(--peach);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>
